@@ -1,5 +1,6 @@
 const express=require("express");
 require("dotenv").config()
+const cors=require("cors")
 
 const {connection}=require("./Config/db")
 const {signUp}=require("./Routes/signUp.route")
@@ -11,7 +12,9 @@ const {todoRoute}=require("./Routes/todo.route");
 
 const app=express();
 app.use(express.json())
-
+app.use(cors({
+    origin:"*"
+}))
 
 app.get("/",(req,res)=>{
     res.send("Wlecome Home Page")
